@@ -1,0 +1,44 @@
+﻿@model Rocky.Models.ViewModels.HomeVM
+
+<div class="container">
+    <div class="text-center">
+        <button class="btn btn-dark filter-button" data-filter="all">All</button>
+        @foreach (var obj in Model.Categories)
+        {
+            <button class="btn btn-outline-secondary filter-button" data-filter="@obj.Name.Replace(' ','_')">
+                @obj.Name
+            </button>
+        }
+    </div>
+    <br />
+    <div class="row">
+        @foreach (var prod in Model.Products)
+        {
+            <partial name="_IndividualProductCard" model="prod" />
+            //display all product
+        }
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+    $(document).ready(function(){
+
+    $(".filter-button").click(function(){
+
+        var value = $(this).attr('data-filter');
+        if(value == "all")
+        {
+            $('.filter').show('1000');
+        }
+        else
+        {
+            $(".filter").not('.'+value).hide('3000');
+            $('.filter').filter('.'+value).show('3000');
+
+        }
+    });
+
+});
+    </script>
+}
