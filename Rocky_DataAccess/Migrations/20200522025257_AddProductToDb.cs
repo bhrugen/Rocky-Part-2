@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Rocky.Migrations
+namespace Rocky_DataAccess.Migrations
 {
     public partial class AddProductToDb : Migration
     {
