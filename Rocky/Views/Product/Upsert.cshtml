@@ -1,6 +1,6 @@
 ﻿@model Rocky.Models.ViewModels.ProductVM
-
-@{ 
+@using Rocky_Utility
+@{
     var title = "Create Product";
 }
 
@@ -114,9 +114,10 @@
             </div>
             <div class="col-4 ">
                 @* Keep this empty *@
-                @if (Model.Product.Id != 0) { 
+                @if (Model.Product.Id != 0)
+                {
                     <img src="@WC.ImagePath@Model.Product.Image" width="100%" style="border-radius:5px; border:1px solid #bbb" />
-                         }
+                }
             </div>
         </div>
     </div>
@@ -131,7 +132,7 @@
     <script>
         $(document).ready(function () {
             $('.summernote').summernote({
-                height:250
+                height: 250
             });
         });
         function validateInput() {

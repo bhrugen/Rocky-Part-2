@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.128
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rocky", "Rocky\Rocky.csproj", "{E95442B6-FA46-449D-9709-CEF75570001A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rocky", "Rocky\Rocky.csproj", "{E95442B6-FA46-449D-9709-CEF75570001A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rocky_Utility", "Rocky_Utility\Rocky_Utility.csproj", "{85D7D988-C41E-4AA2-B980-BDB708CB56D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{E95442B6-FA46-449D-9709-CEF75570001A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E95442B6-FA46-449D-9709-CEF75570001A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E95442B6-FA46-449D-9709-CEF75570001A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85D7D988-C41E-4AA2-B980-BDB708CB56D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85D7D988-C41E-4AA2-B980-BDB708CB56D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85D7D988-C41E-4AA2-B980-BDB708CB56D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85D7D988-C41E-4AA2-B980-BDB708CB56D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

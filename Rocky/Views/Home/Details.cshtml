@@ -1,5 +1,5 @@
 ﻿@model Rocky.Models.ViewModels.DetailsVM
-
+@using Rocky_Utility
 <div class="">
     <form method="post">
         <input asp-for="@Model.Product.Id" hidden />
@@ -49,7 +49,7 @@
                             {
 
 
-                            <button type="submit" asp-route-id="@Model.Product.Id" class="btn btn-info form-control btn-lg" style="height:50px;">Add to Cart</button>
+                                <button type="submit" asp-route-id="@Model.Product.Id" class="btn btn-info form-control btn-lg" style="height:50px;">Add to Cart</button>
                             }
                         </div>
                     </div>
