@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Rocky.Data;
-using Rocky.Models;
+using Rocky_Models;
 using Rocky_Utility;
 
 namespace Rocky.Controllers

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace Rocky.Models
+namespace Rocky_Models
 {
     public class Product
     {

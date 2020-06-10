@@ -1,6 +1,6 @@
 using System;
 
-namespace Rocky.Models
+namespace Rocky_Models
 {
     public class ErrorViewModel
     {

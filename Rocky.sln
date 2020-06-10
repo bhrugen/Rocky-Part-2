@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rocky", "Rocky\Rocky.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rocky_Utility", "Rocky_Utility\Rocky_Utility.csproj", "{85D7D988-C41E-4AA2-B980-BDB708CB56D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rocky_Models", "Rocky_Models\Rocky_Models.csproj", "{F273D45A-D342-4B8C-8046-B70A96BA43FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{85D7D988-C41E-4AA2-B980-BDB708CB56D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85D7D988-C41E-4AA2-B980-BDB708CB56D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85D7D988-C41E-4AA2-B980-BDB708CB56D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F273D45A-D342-4B8C-8046-B70A96BA43FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F273D45A-D342-4B8C-8046-B70A96BA43FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F273D45A-D342-4B8C-8046-B70A96BA43FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F273D45A-D342-4B8C-8046-B70A96BA43FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
