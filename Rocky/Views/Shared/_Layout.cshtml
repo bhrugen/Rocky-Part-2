@@ -54,6 +54,15 @@
                                     <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create Admin User</a>
                                 </div>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Order/Inquiry Management
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Inquiry" asp-action="Index">Inquiry</a>
+                                    
+                                </div>
+                            </li>
                         }
                         <li>
                             @if (HttpContextAccessor.HttpContext.Session.Get<List<ShoppingCart>>(WC.SessionCart) != null)
