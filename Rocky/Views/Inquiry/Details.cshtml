@@ -1,8 +1,95 @@
-﻿
-@{
-    ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@model Rocky_Models.ViewModels.InquiryVM
 
-<h1>Details</h1>
+    <form method="post">
+        <input hidden asp-for="InquiryHeader.Id" />
+        <br />
+        <div class="backgroundWhite container">
+            <div class="card">
+                <div class="card-header bg-dark text-light ml-0 row container">
+                    <div class="col-12 d-none d-md-block col-md-6 pb-1">
+                        <i class="fas fa-shopping-cart"></i> &nbsp; Order Summary
+                    </div>
+                    <div class="col-12 col-md-4 offset-md-2 text-right">
+                        <a asp-action="Index" class="btn btn-outline-info form-control btn-sm">Back to Inquiry</a>
+                    </div>
+                </div>
+                <div class="card-body pb-0">
+                    <div class="container rounded p-2">
+                        <div class="row">
+                            <div class="col-12 col-lg-6 pb-4">
+                                <div class="row">
+                                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                        <span class="text-info">PickUp Details:</span>
+                                    </h4>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">Name</div>
+                                    <div class="col-9">
+                                        <input asp-for="InquiryHeader.FullName" type="text" class="form-control" />
+                                        <span asp-validation-for="InquiryHeader.FullName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">Phone</div>
+                                    <div class="col-9">
+                                        <input asp-for="InquiryHeader.PhoneNumber" type="text" class="form-control" />
+                                        <span asp-validation-for="InquiryHeader.PhoneNumber" class="text-danger"></span>
+                                    </div>
+                                </div>
 
+                                <div class="row my-1">
+                                    <div class="col-3">Email</div>
+                                    <div class="col-9">
+                                        <input asp-for="InquiryHeader.Email" type="text" class="form-control" />
+                                        <span asp-validation-for="InquiryHeader.Email" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="row my-1">
+                                    <div class="col-3">Inquiry Date</div>
+                                    <div class="col-9">
+                                        <input value="@Model.InquiryHeader.InquiryDate.ToShortDateString()" type="text" class="form-control" readonly />
+                                    </div>
+                                </div>
+
+                                <div class="row my-1 pt-2">
+                                    <div class="col-9 offset-3">
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="submit" value="Convert To Cart" class="btn btn-info form-control" />
+                                            </div>
+
+                                            <div class="col">
+                                                <input type="submit" value="Delete" class="btn btn-danger form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-5 offset-lg-1">
+                                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="text-info">Order Summary</span>
+                                </h4>
+                                <ul class="list-group mb-3">
+                                    @foreach (var prod in Model.InquiryDetail)
+                                    {
+                                    <li class="list-group-item d-flex justify-content-between p-2">
+                                        <div class="row container">
+                                            <div class="col-8">
+
+                                                <h6 class="my-0 text-info">@prod.Product.Name</h6>
+                                                <small class="text-muted">Price : $@prod.Product.Price</small><br />
+                                            </div>
+                                            <div class="col-4">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    }
+                                </ul>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>

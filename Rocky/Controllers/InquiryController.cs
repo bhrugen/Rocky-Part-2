@@ -38,7 +38,7 @@ namespace Rocky.Controllers
             InquiryVM = new InquiryVM()
             {
                 InquiryHeader = _inqHRepo.FirstOrDefault(u => u.Id == id),
-                InquiryDetail = _inqDRepo.GetAll(u => u.InquiryHeaderId == id, includeProperties: "Propduct")
+                InquiryDetail = _inqDRepo.GetAll(u => u.InquiryHeaderId == id, includeProperties: "Product")
             };
             return View(InquiryVM);
         }
