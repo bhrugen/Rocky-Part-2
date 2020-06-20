@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Rocky_DataAccess;
 using Rocky_DataAccess.Repository.IRepository;
 using Rocky_Models;
+using Rocky_Models.ViewModels;
 using Rocky_Utility;
 
 namespace Rocky.Controllers
@@ -16,6 +17,9 @@ namespace Rocky.Controllers
     {
         private readonly IInquiryHeaderRepository _inqHRepo;
         private readonly IInquiryDetailRepository _inqDRepo;
+
+        [BindProperty]
+        public InquiryVM InquiryVM { get; set; }
 
         public InquiryController(IInquiryDetailRepository inqDRepo,
             IInquiryHeaderRepository inqHRepo)
@@ -27,6 +31,16 @@ namespace Rocky.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult Details(int id)
+        {
+            InquiryVM = new InquiryVM()
+            {
+                InquiryHeader = _inqHRepo.FirstOrDefault(u => u.Id == id),
+                InquiryDetail = _inqDRepo.GetAll(u => u.InquiryHeaderId == id, includeProperties: "Propduct")
+            };
+            return View(InquiryVM);
         }
 
         #region API CALLS
