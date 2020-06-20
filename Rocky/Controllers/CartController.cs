@@ -20,15 +20,13 @@ namespace Rocky.Controllers
     [Authorize]
     public class CartController : Controller
     {
-        private readonly ApplicationDbContext _db;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IEmailSender _emailSender;
 
         [BindProperty]
         public ProductUserVM ProductUserVM { get; set; }
-        public CartController(ApplicationDbContext db,IWebHostEnvironment webHostEnvironment,IEmailSender emailSender)
+        public CartController(IWebHostEnvironment webHostEnvironment,IEmailSender emailSender)
         {
-            _db = db;
             _webHostEnvironment = webHostEnvironment;
             _emailSender = emailSender;
         }
