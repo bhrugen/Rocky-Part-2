@@ -24,39 +24,91 @@
                                 <div class="row" style="color:#821f3d">
                                     <div class="col-lg-2">
                                     </div>
-                                    <div class="col-12 col-lg-7">
-                                        Product Details
-                                    </div>
+                                    @if (User.IsInRole(WC.AdminRole))
+                                    {
+                                        <div class="col-12 col-lg-3">
+                                            Product Details
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-12 col-lg-7">
+                                            Product Details
+                                        </div>
+                                    }
                                     <div class="col-12 col-lg-2">
                                         Price per sqft
                                     </div>
+                                    @if (User.IsInRole(WC.AdminRole))
+                                    {
+                                        <div class="col-6 col-lg-2">
+                                           Sqft
+                                        </div>
+                                        <div class="col-6 col-lg-2">
+                                            Total Price
+                                        </div>
+                                    }
                                     <div class="col-6 col-sm-4 col-lg-1">
                                     </div>
                                 </div>
                             </div>
 
                             <hr />
+                            @{ 
+                                var orderTotal = 0.0;
+                            }
                             @foreach (var obj in Model)
                             {
-                            <div class="row h-100">
-                                <div class="col-4 col-md-2 text-center py-2">
-                                    <img src="@WC.ImagePath@obj.Image" class="rounded" width="100%" />
+                        <div class="row h-100">
+                            <div class="col-4 col-md-2 text-center py-2">
+                                <img src="@WC.ImagePath@obj.Image" class="rounded" width="100%" />
+                            </div>
+                            @if (User.IsInRole(WC.AdminRole))
+                            {
+
+                                <div class="col-8 col-lg-3">
+                                    <h5>@obj.Name</h5>
+                                    <div style="font-size:11px;">@obj.ShortDesc</div>
                                 </div>
+                            }
+                            else
+                            {
                                 <div class="col-8 col-lg-7">
                                     <h5>@obj.Name</h5>
                                     <div style="font-size:11px;">@obj.ShortDesc</div>
                                 </div>
+                            }
+                            <div class="col-3 col-lg-2 pt-lg-4" style="font-size:11px;">
+                                <span style="font-size:17px;"> $@obj.Price</span>/ sqft
+
+                            </div>
+                            @if (User.IsInRole(WC.AdminRole))
+                            {
+                                <div class="col-4 col-lg-2 pt-lg-4" style="font-size:11px;">
+                                    <input type="text" asp-for="@obj.TempSqFt" class="form-control" />
+                                </div>
                                 <div class="col-3 col-lg-2 pt-lg-4" style="font-size:11px;">
-                                    <span style="font-size:17px;"> $@obj.Price</span>/ sqft
+                                    <span style="font-size:17px;"> $@(obj.Price*obj.TempSqFt)</span>
 
                                 </div>
-                                <div class="col-2 col-lg-1 p-0 pt-lg-4 text-center">
-                                    <a asp-action="Remove" asp-route-id="@obj.Id" class="btn btn-outline-danger">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </div>
+                            }
+                            <div class="col-2 col-lg-1 p-0 pt-lg-4 text-center">
+                                <a asp-action="Remove" asp-route-id="@obj.Id" class="btn btn-outline-danger">
+                                    <i class="fas fa-trash"></i>
+                                </a>
                             </div>
+                        </div>
+                                orderTotal += obj.Price * obj.TempSqFt;
                             <hr />
+                            }
+
+                            @if (User.IsInRole(WC.AdminRole))
+                            {
+                                <div class="row">
+                                    <div class="col-12 text-right pr-4" style="color:#821f3d">
+                                       Order Total : @string.Format("{0:c}", orderTotal)
+                                    </div> 
+                                </div>
                             }
                         </div>
                         <div class="card-footer">
