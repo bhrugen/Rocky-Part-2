@@ -79,6 +79,7 @@ namespace Rocky.Controllers
             {
                 _catRepo.Update(obj);
                 _catRepo.Save();
+                TempData[WC.Success] = "Action completed successfully";
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -111,6 +112,7 @@ namespace Rocky.Controllers
             {
                 return NotFound();
             }
+            TempData[WC.Success] = "Action completed successfully";
             _catRepo.Remove(obj);
             _catRepo.Save();
                 return RedirectToAction("Index");

@@ -138,7 +138,7 @@ namespace Rocky.Controllers
                     }
                     _prodRepo.Update(productVM.Product);
                 }
-
+                TempData[WC.Success] = "Action completed successfully";
 
                 _prodRepo.Save();
                 return RedirectToAction("Index");
@@ -191,7 +191,8 @@ namespace Rocky.Controllers
 
             _prodRepo.Remove(obj);
                 _prodRepo.Save();
-                return RedirectToAction("Index");
+            TempData[WC.Success] = "Action completed successfully";
+            return RedirectToAction("Index");
             
 
         }
