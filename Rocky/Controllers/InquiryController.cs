@@ -12,7 +12,7 @@ using Rocky_Utility;
 
 namespace Rocky.Controllers
 {
-    [Authorize(WC.AdminRole)]
+    [Authorize(Roles=WC.AdminRole)]
     public class InquiryController : Controller
     {
         private readonly IInquiryHeaderRepository _inqHRepo;
@@ -53,7 +53,8 @@ namespace Rocky.Controllers
             {
                 ShoppingCart shoppingCart = new ShoppingCart()
                 {
-                    ProductId = detail.ProductId
+                    ProductId = detail.ProductId,
+                    SqFt=1
                 };
                 shoppingCartList.Add(shoppingCart);
             }

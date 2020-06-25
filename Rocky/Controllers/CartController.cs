@@ -166,7 +166,8 @@ namespace Rocky.Controllers
                 InquiryDetail inquiryDetail = new InquiryDetail()
                 {
                     InquiryHeaderId = inquiryHeader.Id,
-                    ProductId = prod.Id
+                    ProductId = prod.Id,
+                    
                 };
                 _inqDRepo.Add(inquiryDetail);
                
