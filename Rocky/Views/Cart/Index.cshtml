@@ -113,13 +113,21 @@
                         </div>
                         <div class="card-footer">
                             <div class="row">
-                                <div class="col-6 col-md-3 offset-md-9">
-                                    <button type="submit" class="btn btn-success form-control ">
-                                        <span>Continue</span>
-                                    </button>
+
+                                <div class="col-6 col-md-3 offset-md-6">
+                                    @if (User.IsInRole(WC.AdminRole))
+                                    {
+                                        <input type="submit" asp-action="UpdateCart" formmethod="post" name="Update" value="Update Cart"
+                                               class="btn btn-info form-control" />
+                                    }
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <button type="submit" class="btn btn-success form-control ">
+                                            <span>Continue</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
