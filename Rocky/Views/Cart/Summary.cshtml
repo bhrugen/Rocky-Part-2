@@ -50,6 +50,49 @@
                                         <span asp-validation-for="ApplicationUser.Email" class="text-danger"></span>
                                     </div>
                                 </div>
+                                @if (User.IsInRole(Rocky_Utility.WC.AdminRole))
+                                {
+
+                                    <div class="row my-1">
+                                        <div class="col-3">
+                                            <label>Address</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input asp-for="ApplicationUser.StreetAddress" type="text" class="form-control" />
+                                            <span asp-validation-for="ApplicationUser.StreetAddress" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-1">
+                                        <div class="col-3">
+                                            <label>City</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input asp-for="ApplicationUser.City" type="text" class="form-control" />
+                                            <span asp-validation-for="ApplicationUser.City" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-1">
+                                        <div class="col-3">
+                                            <label>State</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input asp-for="ApplicationUser.State" type="text" class="form-control" />
+                                            <span asp-validation-for="ApplicationUser.State" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-1">
+                                        <div class="col-3">
+                                            <label>Poastal Code</label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input asp-for="ApplicationUser.PostalCode" type="text" class="form-control" />
+                                            <span asp-validation-for="ApplicationUser.PostalCode" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                }
                             </div>
                             <div class="col-12 col-lg-5 row">
                                 <div class="col-12">
