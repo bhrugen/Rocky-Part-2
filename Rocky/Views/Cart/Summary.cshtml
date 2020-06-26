@@ -57,6 +57,8 @@
                                         <span class="text-info">Summary:</span>
                                     </h4>
                                     <ul class="list-group mb-3">
+                                        @{ var orderTotal = 0.0;}
+
                                         @for (int i=0;i< Model.ProductList.Count();i++)
                                         {
                                             <input type="hidden" asp-for="@Model.ProductList[i].Id" />
@@ -64,8 +66,27 @@
                                             <li class="list-group-item d-flex justify-content-between">
                                                 <div>
                                                     <h6 class="my-0">@Model.ProductList[i].Name</h6>
-                                                    <small class="text-muted">Price per Sqft: $@Model.ProductList[i].Price</small>
+                                                    @if (User.IsInRole(Rocky_Utility.WC.AdminRole))
+                                                    {
+                                                        <small class="text-muted">Sqft: @Model.ProductList[i].TempSqFt</small>
+                                                    }
+                                                    else
+                                                    {
+                                                        <small class="text-muted">Price per Sqft: $@Model.ProductList[i].Price</small>
+                                                    }
                                                 </div>
+                                                @if (User.IsInRole(Rocky_Utility.WC.AdminRole))
+                                                {
+                                                    <span class="text-muted">$@(Model.ProductList[i].Price * Model.ProductList[i].TempSqFt)</span>
+                                                }
+                                            </li>
+                                            orderTotal += Model.ProductList[i].Price * Model.ProductList[i].TempSqFt;
+                                        }
+                                        @if (User.IsInRole(Rocky_Utility.WC.AdminRole))
+                                        {
+                                            <li class="list-group-item d-flex justify-content-between bg-light">
+                                                <small class="text-info"> Total (USD)</small>
+                                                <strong class="text-info">$@orderTotal</strong>
                                             </li>
                                         }
                                     </ul>
