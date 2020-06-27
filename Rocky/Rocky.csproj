@@ -17,6 +17,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.0-preview.6.20323.1" />
+    <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="18.1.0.59" />
   </ItemGroup>
 
   <ItemGroup>
