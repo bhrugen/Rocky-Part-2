@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Rocky_DataAccess.Repository.IRepository;
+using Rocky_Models.ViewModels;
+using Rocky_Utility;
 using Rocky_Utility.BrainTree;
 
 namespace Rocky.Controllers
@@ -25,7 +27,16 @@ namespace Rocky.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            OrderListVM orderListVM = new OrderListVM()
+            {
+                OrderHList = _orderHRepo.GetAll(),
+                StatusList = WC.listStatus.ToList().Select(i => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
+                {
+                    Text = i,
+                    Value = i
+                })
+            };
+            return View(orderListVM);
         }
     }
 }
