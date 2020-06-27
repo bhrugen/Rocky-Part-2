@@ -1,2 +1,21 @@
 ﻿@model Rocky_Models.ViewModels.OrderListVM
 
+    <div>
+        <ejs-grid id="Grid" dataSource="@Model.OrderHList" allowFiltering="true" allowSorting="true" allowPaging="true">
+            <e-grid-filtersettings type="Menu"></e-grid-filtersettings>
+            <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
+            <e-grid-columns>
+                <e-grid-column field="Id" headerText="ID" isPrimaryKey="true" textAlign="Right" width="100"></e-grid-column>
+                @*<e-grid-column field="Employees" headerText="Employee Name" filter="@(new { type="CheckBox"})" clipMode="EllipsisWithTooltip" template="#empTemplate" width="200"></e-grid-column>
+                <e-grid-column field="Designation" headerText="Designation" filter="@(new { type="CheckBox"})" clipMode="EllipsisWithTooltip" width="170"></e-grid-column>
+                <e-grid-column field="Mail" headerText="Mail" filter="@(new { type="Menu"})" width="230"></e-grid-column>
+                <e-grid-column field="Location" headerText="Location" template="#coltemplate" filter="@(new { type="CheckBox"})" width="140"></e-grid-column>
+                <e-grid-column field="Status" headerText="Status" template="#statusTemplate" filter="@(new { type="CheckBox", itemTemplate="#StatusItemTemp" })" width="150"></e-grid-column>
+                <e-grid-column field="Trustworthiness" headerText="Trustworthiness" filter="@(new { type="CheckBox", itemTemplate="${ trustTemp(data) }"})" template="#trustTemplate" width="200"></e-grid-column>
+                <e-grid-column field="Rating" headerText="Rating" filter="@(new { type="CheckBox", itemTemplate="<div>${ratingDetail(data)}</div>"})" template="#ratingTemplate" width="160"></e-grid-column>
+                <e-grid-column field="Software" headerText="Software" allowSorting="false" allowFiltering="false" template="#progessTemplate" width="180"></e-grid-column>
+                <e-grid-column field="CurrentSalary" headerText="Current Salary" filter="@(new { type="Menu"})" format="C2" textAlign="Right" width="160"></e-grid-column>
+                <e-grid-column field="Address" headerText="Address" filter="@(new { type="Menu"})" width="240"></e-grid-column>*@
+            </e-grid-columns>
+        </ejs-grid>
+    </div>
