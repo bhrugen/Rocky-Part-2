@@ -1,6 +1,6 @@
 ﻿@model Rocky_Models.ViewModels.ProductUserVM
 
-<form method="post">
+<form method="post" id="payment-form">
     <br />
     <div class="backgroundWhiteBorder">
         <div class="container">
@@ -145,7 +145,7 @@
                         <div class="col-12 col-md-5 offset-md-7">
                             @if (User.IsInRole(Rocky_Utility.WC.AdminRole))
                             {
-                                <button class="btn btn-success form-control" id="submit-button">Submit Order</button> 
+                                <button class="btn btn-success form-control" id="submit-button">Submit Order</button>
                             }
                             else
                             {
@@ -162,4 +162,21 @@
 
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />
+    <script src="https://js.braintreegateway.com/web/dropin/1.22.1/js/dropin.min.js"></script>
+    <script>
+        var form = document.querySelector('#payment-form');
+
+            braintree.dropin.create({
+                            authorization: 'CLIENT_TOKEN_FROM_SERVER',
+              container: '#dropin-container'
+            }, function (createErr, instance) {
+                    form.addEventListener('submit', function () {
+                        event.preventDefault();
+
+                        //Add the nonce to the form and submit
+
+                    });
+            });
+    </script>
+   
 }
