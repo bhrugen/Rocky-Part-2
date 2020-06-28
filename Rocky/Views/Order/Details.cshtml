@@ -139,35 +139,48 @@
                                         </div>
                                     </li>
                                 }
-                                    <li class="list-group-item bg-info">
-                                        <div class="row container">
-                                            <div class="col-6">
-                                                <h5 class="text-white">TOTAL </h5>
-                                            </div>
-                                            <div class="col-6 text-right">
-                                                <h5 class="text-white">$@(Model.OrderHeader.FinalOrderTotal)</h5>
-                                            </div>
+                                <li class="list-group-item bg-info">
+                                    <div class="row container">
+                                        <div class="col-6">
+                                            <h5 class="text-white">TOTAL </h5>
                                         </div>
-                                    </li>
-                                
+                                        <div class="col-6 text-right">
+                                            <h5 class="text-white">$@(Model.OrderHeader.FinalOrderTotal)</h5>
+                                        </div>
+                                    </div>
+                                </li>
+
                             </ul>
 
 
                             <br />
 
-                            <input type="submit" value="Start Processing" class="btn btn-info form-control" />
-
-                            <input type="submit" value="Ship Order" class="btn btn-primary form-control" />
-
-
-                            <div class="pt-2">
-                                <button type="submit"
-                                        class="btn btn-danger form-control"
-                                        formmethod="post">
-                                    Cancel Order
-                                </button>
+                            @if (Model.OrderHeader.OrderStatus == Rocky_Utility.WC.StatusApproved)
+                            {
+                                <input type="submit" value="Start Processing"
+                                       formmethod="post" asp-action="StartProcessing"
+                                       class="btn btn-info form-control" />
+                            }
+                            @if (Model.OrderHeader.OrderStatus == Rocky_Utility.WC.StatusInProcess)
+                            {
+                                <input type="submit" value="Ship Order"
+                                       formmethod="post" asp-action="ShipOrder"
+                                       class="btn btn-primary form-control" />
+                            }
+                            @if (Model.OrderHeader.OrderStatus != Rocky_Utility.WC.StatusRefunded
+                                && Model.OrderHeader.OrderStatus != Rocky_Utility.WC.StatusCancelled)
+                            {
+                                <div class="pt-2">
+                                    <button type="submit"
+                                            class="btn btn-danger form-control"
+                                            asp-action="CancelOrder"
+                                            formmethod="post">
+                                        Cancel Order
+                                    </button>
+                                </div>
+                            }
                             </div>
-                        </div>
+                            
                     </div>
                 </div>
             </div>
