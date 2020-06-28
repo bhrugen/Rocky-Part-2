@@ -43,7 +43,7 @@
                                     @if (User.IsInRole(WC.AdminRole))
                                     {
                                         <div class="col-6 col-lg-2">
-                                           Sqft
+                                            Sqft
                                         </div>
                                         <div class="col-6 col-lg-2">
                                             Total Price
@@ -55,61 +55,63 @@
                             </div>
 
                             <hr />
-                            @{ 
+                            @{
                                 var orderTotal = 0.0;
                             }
-                            @for(int i=0;i<Model.Count();i++)
+                            @for (int i = 0; i < Model.Count(); i++)
                             {
                                 <input hidden asp-for="@Model[i].Id" />
-                        <div class="row h-100">
-                            <div class="col-4 col-md-2 text-center py-2">
-                                <img src="@WC.ImagePath@Model[i].Image" class="rounded" width="100%" />
-                            </div>
-                            @if (User.IsInRole(WC.AdminRole))
-                            {
+                                <div class="row h-100">
+                                    <div class="col-4 col-md-2 text-center py-2">
+                                        <img src="@WC.ImagePath@Model[i].Image" class="rounded" width="100%" />
+                                    </div>
+                                    @if (User.IsInRole(WC.AdminRole))
+                                    {
 
-                                <div class="col-8 col-lg-3">
-                                    <h5>@Model[i].Name</h5>
-                                    <div style="font-size:11px;">@Model[i].ShortDesc</div>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="col-8 col-lg-7">
-                                    <h5>@Model[i].Name</h5>
-                                    <div style="font-size:11px;">@Model[i].ShortDesc</div>
-                                </div>
-                            }
-                            <div class="col-3 col-lg-2 pt-lg-4" style="font-size:11px;">
-                                <span style="font-size:17px;"> $@Model[i].Price</span>/ sqft
+                                        <div class="col-8 col-lg-3">
+                                            <h5>@Model[i].Name</h5>
+                                            <div style="font-size:11px;">@Model[i].ShortDesc</div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-8 col-lg-7">
+                                            <h5>@Model[i].Name</h5>
+                                            <div style="font-size:11px;">@Model[i].ShortDesc</div>
+                                        </div>
+                                    }
+                                    <div class="col-3 col-lg-2 pt-lg-4" style="font-size:11px;">
+                                        <span style="font-size:17px;"> $@Model[i].Price</span>/ sqft
 
-                            </div>
-                            @if (User.IsInRole(WC.AdminRole))
-                            {
+                                    </div>
+                                    @if (User.IsInRole(WC.AdminRole))
+                                    {
                                 <div class="col-4 col-lg-2 pt-lg-4" style="font-size:11px;">
                                     <input type="text" asp-for="@Model[i].TempSqFt" class="form-control" />
+                                    <span asp-validation-for="@Model[i].TempSqFt" class="text-danger"></span>
                                 </div>
-                                <div class="col-3 col-lg-2 pt-lg-4" style="font-size:11px;">
-                                    <span style="font-size:17px;"> $@(Model[i].Price* Model[i].TempSqFt)</span>
+                                        <div class="col-3 col-lg-2 pt-lg-4" style="font-size:11px;">
+                                            <span style="font-size:17px;"> $@(Model[i].Price* Model[i].TempSqFt)</span>
+                                            
 
+                                        </div>
+                                    }
+                                    <div class="col-2 col-lg-1 p-0 pt-lg-4 text-center">
+                                        <a asp-action="Remove" asp-route-id="@Model[i].Id" class="btn btn-outline-danger">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                            }
-                            <div class="col-2 col-lg-1 p-0 pt-lg-4 text-center">
-                                <a asp-action="Remove" asp-route-id="@Model[i].Id" class="btn btn-outline-danger">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </div>
-                        </div>
                                 orderTotal += Model[i].Price * Model[i].TempSqFt;
-                            <hr />
+                                <hr />
                             }
 
                             @if (User.IsInRole(WC.AdminRole))
                             {
                                 <div class="row">
                                     <div class="col-12 text-right pr-4" style="color:#821f3d">
-                                       Order Total : @string.Format("{0:c}", orderTotal)
-                                    </div> 
+                                        Order Total : @string.Format("{0:c}", orderTotal)
+                                    </div>
                                 </div>
                             }
                         </div>
@@ -122,14 +124,14 @@
                                         <input type="submit" asp-action="UpdateCart" formmethod="post" name="Update" value="Update Cart"
                                                class="btn btn-info form-control" />
                                     }
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <button type="submit" class="btn btn-success form-control ">
-                                            <span>Continue</span>
-                                        </button>
-                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <button type="submit" class="btn btn-success form-control ">
+                                        <span>Continue</span>
+                                    </button>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -139,4 +141,8 @@
 else
 {
     <p>Please add items to cart.</p>
+}
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
 }
