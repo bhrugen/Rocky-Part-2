@@ -124,30 +124,32 @@
                                 <span class="text-info">Order Summary</span>
                             </h4>
                             <ul class="list-group mb-3">
-
-                                <li class="list-group-item d-flex justify-content-between p-2">
-                                    <div class="row container">
-                                        <div class="col-8">
-                                            <h6 class="my-0 text-info">Product.Name</h6>
-                                            <small class="text-muted">Price : PricePerSqFt</small><br />
-                                            <small class="text-muted">Quantity : Sqft</small>
+                                @foreach (var detail in Model.OrderDetail)
+                                {
+                                    <li class="list-group-item d-flex justify-content-between p-2">
+                                        <div class="row container">
+                                            <div class="col-8">
+                                                <h6 class="my-0 text-info">@detail.Product.Name</h6>
+                                                <small class="text-muted">Price : @detail.PricePerSqFt</small><br />
+                                                <small class="text-muted">Quantity : @detail.Sqft</small>
+                                            </div>
+                                            <div class="col-4">
+                                                <p class="text-success">$@(detail.PricePerSqFt * detail.Sqft)</p>
+                                            </div>
                                         </div>
-                                        <div class="col-4">
-                                            <p class="text-success">PricePerSqFt * Sqft</p>
+                                    </li>
+                                }
+                                    <li class="list-group-item bg-info">
+                                        <div class="row container">
+                                            <div class="col-6">
+                                                <h5 class="text-white">TOTAL </h5>
+                                            </div>
+                                            <div class="col-6 text-right">
+                                                <h5 class="text-white">$@(Model.OrderHeader.FinalOrderTotal)</h5>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
+                                    </li>
                                 
-                                <li class="list-group-item bg-info">
-                                    <div class="row container">
-                                        <div class="col-6">
-                                            <h5 class="text-white">TOTAL </h5>
-                                        </div>
-                                        <div class="col-6 text-right">
-                                            <h5 class="text-white">FinalOrderTotal</h5>
-                                        </div>
-                                    </div>
-                                </li>
                             </ul>
 
 
@@ -173,3 +175,15 @@
     </div>
 </form>
 
+@section Scripts{ 
+<partial name="_ValidationScriptsPartial" />
+<script>
+    $(document).ready(function () {
+        var shippingDate = document.getElementById("shippingDate");
+        if (shippingDate.value == '1/1/0001') {
+            shippingDate.value = "";
+        }
+    })
+</script>
+
+}

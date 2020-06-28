@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Braintree;
 using Microsoft.AspNetCore.Mvc;
 using Rocky_DataAccess.Repository.IRepository;
+using Rocky_Models;
 using Rocky_Models.ViewModels;
 using Rocky_Utility;
 using Rocky_Utility.BrainTree;
@@ -70,6 +72,33 @@ namespace Rocky.Controllers
             };
 
             return View(OrderVM);
+        }
+
+        [HttpPost]
+        public IActionResult StartProcessing()
+        {
+            OrderHeader orderHeader = _orderHRepo.FirstOrDefault(u => u.Id == OrderVM.OrderHeader.Id);
+            orderHeader.OrderStatus = WC.StatusInProcess;
+            _orderHRepo.Save();
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public IActionResult ShipOrder()
+        {
+            OrderHeader orderHeader = _orderHRepo.FirstOrDefault(u => u.Id == OrderVM.OrderHeader.Id);
+            orderHeader.OrderStatus = WC.StatusShipped;
+            orderHeader.ShippingDate = DateTime.Now;
+            _orderHRepo.Save();
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpPost]
+        public IActionResult CancelOrder()
+        {
+            OrderHeader orderHeader = _orderHRepo.FirstOrDefault(u => u.Id == OrderVM.OrderHeader.Id);
+            orderHeader.OrderStatus = WC.StatusInProcess;
+            _orderHRepo.Save();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
