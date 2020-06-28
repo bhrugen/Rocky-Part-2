@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Braintree;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Rocky_DataAccess.Repository.IRepository;
 using Rocky_Models;
@@ -12,6 +13,7 @@ using Rocky_Utility;
 using Rocky_Utility.BrainTree;
 namespace Rocky.Controllers
 {
+    [Authorize(Roles =WC.AdminRole)]
     public class OrderController : Controller
     {
         private readonly IOrderHeaderRepository _orderHRepo;

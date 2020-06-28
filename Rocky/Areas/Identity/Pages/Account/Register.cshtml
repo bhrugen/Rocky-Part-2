@@ -63,6 +63,8 @@
                                 }
                             </div>
                         </form>
+                        @if (!User.IsInRole(WC.AdminRole))
+                        {
                         <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
                             <p>
                                 By clicking <em>Register</em> you agree to our <a href="" target="_blank"> terms of service </a>
@@ -88,6 +90,7 @@
                                 </p>
                             </div>
                         </form>
+                        }
                     </div>
                 </div>
             </div>
