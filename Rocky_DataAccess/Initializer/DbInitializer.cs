@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Rocky_Models;
+using Rocky_Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +25,38 @@ namespace Rocky_DataAccess.Initializer
 
         public void Initialize()
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (_db.Database.GetPendingMigrations().Count() > 0)
+                {
+                    _db.Database.Migrate();
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+
+            if (!_roleManager.RoleExistsAsync(WC.AdminRole).GetAwaiter().GetResult())
+            {
+                 _roleManager.CreateAsync(new IdentityRole(WC.AdminRole)).GetAwaiter().GetResult();
+                 _roleManager.CreateAsync(new IdentityRole(WC.CustomerRole)).GetAwaiter().GetResult();
+            }
+
+            _userManager.CreateAsync(new ApplicationUser
+            {
+                UserName = "admin@gmail.com",
+                Email = "admin@gmail.com",
+                EmailConfirmed = true,
+                FullName = "Admin Tester",
+                PhoneNumber = "111111111111"
+            }, "Admin123*").GetAwaiter().GetResult();
+
+            ApplicationUser user = _db.ApplicationUser.FirstOrDefault(u => u.Email == "admin@gmail.com");
+            _userManager.AddToRoleAsync(user, WC.AdminRole).GetAwaiter().GetResult();
+
+
         }
     }
 }
