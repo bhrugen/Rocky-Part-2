@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rocky_DataAccess.Initializer
+namespace Rocky_DataAccess.Initializer 
 {
     public class DbInitializer : IDbInitializer
     {
@@ -42,6 +42,10 @@ namespace Rocky_DataAccess.Initializer
             {
                  _roleManager.CreateAsync(new IdentityRole(WC.AdminRole)).GetAwaiter().GetResult();
                  _roleManager.CreateAsync(new IdentityRole(WC.CustomerRole)).GetAwaiter().GetResult();
+            }
+            else
+            {
+                return;
             }
 
             _userManager.CreateAsync(new ApplicationUser
